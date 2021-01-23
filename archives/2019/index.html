@@ -17,25 +17,9 @@
   <meta name="description" content="">
   <meta name="author" content="Mr. Yan">
   <meta name="keywords" content="">
-  <title>php - 爱吃茶叶的程序猫</title>
+  <title>归档 - 爱吃茶叶的程序猫</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
-  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
-
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
-    
-  
-
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
-  
 
 
 
@@ -63,7 +47,7 @@
 
 
 <body>
-  <header style="height: 70vh;">
+  <header style="height: 60vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -138,46 +122,9 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="php">
+            <span class="h2" id="subtitle" title="归档">
               
             </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-01-21 21:45" pubdate>
-        2021年1月21日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      117 字
-    </span>
-  
-
-  
-    
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      2
-       分钟
-    </span>
-  
-
-  
-  
-</div>
 
             
           </div>
@@ -190,70 +137,40 @@
 
   <main>
     
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<div class="list-group">
+  <p class="h4">共计 2 篇文章</p>
+  <hr>
+  
+  
+    
       
+      <p class="h5">2019</p>
+    
+    <a href="/2019/10/10/go/" class="list-group-item list-group-item-action">
+      <span class="archive-post-title">golang</span>
+      <time style="float: right;">10-10</time>
+    </a>
+  
+</div>
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">php</h1>
-            
-            <div class="markdown-body">
-              <h2 id="Quick-php"><a href="#Quick-php" class="headerlink" title="Quick php"></a>Quick php</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable">$page</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;page&#x27;</span>] ?? <span class="hljs-number">1</span>;<br>        <span class="hljs-variable">$size</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;size&#x27;</span>] ?? <span class="hljs-number">0</span> ?: <span class="hljs-number">20</span>;<br>        <span class="hljs-variable">$sort</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;sort&#x27;</span>] ?? <span class="hljs-string">&#x27;id_desc&#x27;</span>;<br><br>        <span class="hljs-variable">$query</span> = FollowModel::query();<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$sort</span> == <span class="hljs-string">&#x27;id_desc&#x27;</span>) &#123;<br>            <span class="hljs-variable">$query</span>-&gt;desc(<span class="hljs-string">&#x27;id&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable">$sort</span> == <span class="hljs-string">&#x27;id_asc&#x27;</span>) &#123;<br>            <span class="hljs-variable">$query</span>-&gt;asc(<span class="hljs-string">&#x27;id&#x27;</span>);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;project_id) &#123;<br>            <span class="hljs-variable">$query</span>-&gt;where(<span class="hljs-string">&#x27;project_id&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;project_id);<br>        &#125;<br><br>        <span class="hljs-variable">$lists</span> = <span class="hljs-variable">$query</span>-&gt;page(<span class="hljs-variable">$page</span>, <span class="hljs-variable">$size</span>)-&gt;select();<br>        <span class="hljs-variable">$lists</span>-&gt;each(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">&amp;<span class="hljs-variable">$item</span></span>) </span>&#123;<br>            <span class="hljs-variable">$item</span>-&gt;format(<span class="hljs-string">&#x27;time&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>);<br>            <span class="hljs-variable">$item</span>-&gt;user = UserModel::get(<span class="hljs-variable">$item</span>-&gt;user_id);<br>            <span class="hljs-variable">$item</span>-&gt;cus = CustomerModel::get(<span class="hljs-variable">$item</span>-&gt;cus_id);<br>        &#125;);<br>        view(compact(<span class="hljs-string">&#x27;lists&#x27;</span>));<br>    &#125;<br><br></code></pre></td></tr></table></figure>
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
+
+
+
+
               </div>
-              
-                <p class="note note-warning">本博客所有文章除特别声明外，转载请注明出处！</p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/01/21/go/">
-                        <span class="hidden-mobile">golang</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
             </div>
-
-            
-          </article>
+          </div>
         </div>
       </div>
-    </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
-
     
 
     
@@ -333,15 +250,9 @@
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
 
 
 
