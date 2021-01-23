@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>php</title>
+    <link href="/2021/01/21/php/"/>
+    <url>/2021/01/21/php/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Quick-php"><a href="#Quick-php" class="headerlink" title="Quick php"></a>Quick php</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable">$page</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;page&#x27;</span>] ?? <span class="hljs-number">1</span>;<br>        <span class="hljs-variable">$size</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;size&#x27;</span>] ?? <span class="hljs-number">0</span> ?: <span class="hljs-number">20</span>;<br>        <span class="hljs-variable">$sort</span> = <span class="hljs-variable">$_GET</span>[<span class="hljs-string">&#x27;sort&#x27;</span>] ?? <span class="hljs-string">&#x27;id_desc&#x27;</span>;<br><br>        <span class="hljs-variable">$query</span> = FollowModel::query();<br>        <span class="hljs-keyword">if</span> (<span class="hljs-variable">$sort</span> == <span class="hljs-string">&#x27;id_desc&#x27;</span>) &#123;<br>            <span class="hljs-variable">$query</span>-&gt;desc(<span class="hljs-string">&#x27;id&#x27;</span>);<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-variable">$sort</span> == <span class="hljs-string">&#x27;id_asc&#x27;</span>) &#123;<br>            <span class="hljs-variable">$query</span>-&gt;asc(<span class="hljs-string">&#x27;id&#x27;</span>);<br>        &#125;<br>        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;project_id) &#123;<br>            <span class="hljs-variable">$query</span>-&gt;where(<span class="hljs-string">&#x27;project_id&#x27;</span>, <span class="hljs-keyword">$this</span>-&gt;project_id);<br>        &#125;<br><br>        <span class="hljs-variable">$lists</span> = <span class="hljs-variable">$query</span>-&gt;page(<span class="hljs-variable">$page</span>, <span class="hljs-variable">$size</span>)-&gt;select();<br>        <span class="hljs-variable">$lists</span>-&gt;each(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">&amp;<span class="hljs-variable">$item</span></span>) </span>&#123;<br>            <span class="hljs-variable">$item</span>-&gt;format(<span class="hljs-string">&#x27;time&#x27;</span>, <span class="hljs-string">&#x27;datetime&#x27;</span>);<br>            <span class="hljs-variable">$item</span>-&gt;user = UserModel::get(<span class="hljs-variable">$item</span>-&gt;user_id);<br>            <span class="hljs-variable">$item</span>-&gt;cus = CustomerModel::get(<span class="hljs-variable">$item</span>-&gt;cus_id);<br>        &#125;);<br>        view(compact(<span class="hljs-string">&#x27;lists&#x27;</span>));<br>    &#125;<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>golang</title>
+    <link href="/2021/01/21/go/"/>
+    <url>/2021/01/21/go/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Quick-golang"><a href="#Quick-golang" class="headerlink" title="Quick golang"></a>Quick golang</h2><figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs golang"><span class="hljs-keyword">package</span> controller<br><br><span class="hljs-keyword">import</span> (<br><span class="hljs-string">&quot;github.com/jinzhu/gorm&quot;</span><br><span class="hljs-string">&quot;yyy/router&quot;</span><br>)<br><br><span class="hljs-keyword">var</span> R = router.SetupRouter()<br><span class="hljs-keyword">var</span> Db *gorm.DB<br><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
