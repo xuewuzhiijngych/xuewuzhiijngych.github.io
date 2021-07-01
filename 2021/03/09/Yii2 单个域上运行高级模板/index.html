@@ -1,0 +1,431 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Mr. Yan">
+  <meta name="keywords" content="">
+  <title>Yii2 单个域上运行高级模板 - 爱吃茶叶的程序猫</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Program 艺术</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Yii2 单个域上运行高级模板">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-09 15:34" pubdate>
+        2021年3月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      347 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Yii2 单个域上运行高级模板</h1>
+            
+            <div class="markdown-body">
+              <ul>
+<li>Yii2 单个域上运行高级模板 <br/></li>
+</ul>
+<h3 id="操作流程："><a href="#操作流程：" class="headerlink" title="操作流程："></a>操作流程：<br/></h3><ul>
+<li>最后实现的效果为：前端的 URL 是 <a target="_blank" rel="noopener" href="http://site.cn/">http://site.cn</a> 而后端的 URL 是 <a target="_blank" rel="noopener" href="http://site.cn/admin">http://site.cn/admin</a> .</li>
+<li>在项目根目录新建文件夹 public . 在public下面新建 admin 文件夹 .</li>
+<li>将 frontend/web 的内容移动到 public目录中。 将 backend/web 的内容移动到 public/admin中.</li>
+<li>调整 sessions 和 cookies 的配置. 修改配置文件 backend/config/main.php 如下.</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs php">  <span class="hljs-string">&#x27;components&#x27;</span> =&gt; [<br>    <span class="hljs-string">&#x27;request&#x27;</span> =&gt; [<br>        <span class="hljs-string">&#x27;csrfParam&#x27;</span> =&gt; <span class="hljs-string">&#x27;_csrf-backend&#x27;</span>,<br>        <span class="hljs-string">&#x27;csrfCookie&#x27;</span> =&gt; [<br>            <span class="hljs-string">&#x27;httpOnly&#x27;</span> =&gt; <span class="hljs-literal">true</span>,<br>            <span class="hljs-string">&#x27;path&#x27;</span> =&gt; <span class="hljs-string">&#x27;/admin&#x27;</span>,<br>        ],<br>    ],<br>    <span class="hljs-string">&#x27;user&#x27;</span> =&gt; [<br>        <span class="hljs-string">&#x27;identityClass&#x27;</span> =&gt; <span class="hljs-string">&#x27;common\models\User&#x27;</span>,<br>        <span class="hljs-string">&#x27;enableAutoLogin&#x27;</span> =&gt; <span class="hljs-literal">true</span>,<br>        <span class="hljs-string">&#x27;identityCookie&#x27;</span> =&gt; [<br>            <span class="hljs-string">&#x27;name&#x27;</span> =&gt; <span class="hljs-string">&#x27;_identity-backend&#x27;</span>,<br>            <span class="hljs-string">&#x27;path&#x27;</span> =&gt; <span class="hljs-string">&#x27;/admin&#x27;</span>,<br>            <span class="hljs-string">&#x27;httpOnly&#x27;</span> =&gt; <span class="hljs-literal">true</span>,<br>        ],<br>    ],<br>    <span class="hljs-string">&#x27;session&#x27;</span> =&gt; [<br>        <span class="hljs-comment">// this is the name of the session cookie used for login on the backend</span><br>        <span class="hljs-string">&#x27;name&#x27;</span> =&gt; <span class="hljs-string">&#x27;advanced-backend&#x27;</span>,<br>        <span class="hljs-string">&#x27;cookieParams&#x27;</span> =&gt; [<br>            <span class="hljs-string">&#x27;path&#x27;</span> =&gt; <span class="hljs-string">&#x27;/admin&#x27;</span>,<br>        ],<br>    ],<br>],<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p class="note note-danger">! 修改public/admin 目录下的 index.php 和 index-test.php 中的文件引用目录 !</p></li>
+<li>下面展示一个例子 public/admin/index.php :<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs php"> defined(<span class="hljs-string">&#x27;YII_DEBUG&#x27;</span>) <span class="hljs-keyword">or</span> define(<span class="hljs-string">&#x27;YII_DEBUG&#x27;</span>, <span class="hljs-literal">true</span>);<br>defined(<span class="hljs-string">&#x27;YII_ENV&#x27;</span>) <span class="hljs-keyword">or</span> define(<span class="hljs-string">&#x27;YII_ENV&#x27;</span>, <span class="hljs-string">&#x27;dev&#x27;</span>);<br><br><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;../../vendor/autoload.php&#x27;</span>;<br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;../../vendor/yiisoft/yii2/Yii.php&#x27;</span>;<br><br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;../../common/config/bootstrap.php&#x27;</span>;<br><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;../../backend/config/bootstrap.php&#x27;</span>;<br><br><span class="hljs-variable">$config</span> = yii\helpers\ArrayHelper::merge(<br>    <span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;../../common/config/main.php&#x27;</span>,<br>    <span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;../../common/config/main-local.php&#x27;</span>,<br>    <span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;../../backend/config/main.php&#x27;</span>,<br>    <span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;../../backend/config/main-local.php&#x27;</span><br>);<br><br>(<span class="hljs-keyword">new</span> yii\web\Application(<span class="hljs-variable">$config</span>))-&gt;run();<br><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/php/">php</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Yii2/">Yii2</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，转载请注明出处！</p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/09/Laravel%E5%88%9D%E5%A7%8B%E5%8C%96%E5%B7%A5%E4%BD%9C/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Laravel初始化工作</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/09/Yii2%20%E6%9D%82%E9%A1%B9/">
+                        <span class="hidden-mobile">Yii2 杂项</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> <a href="https://github.com/xuewuzhiijngych" target="_blank" rel="nofollow noopener"><span>我的 Github</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
