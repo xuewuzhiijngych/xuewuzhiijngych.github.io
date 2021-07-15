@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>Nginx反向代理Go服务器</title>
+    <link href="/2021/07/15/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Go%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <url>/2021/07/15/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86Go%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<h3 id="操作流程："><a href="#操作流程：" class="headerlink" title="操作流程："></a>操作流程：<br/></h3><ul><li>环境：win10 phpstudy的nginx</li><li>首先查看 Nginx根配置 nginx.conf http中是否包含 ：include vhosts/*.conf; （不包含也无所谓，后面可以手动 include）</li><li>再vhost 目录下新建 go.api.cn.conf</li></ul><ul><li>编辑内容如下：</li></ul><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs php">upstream go.api.cn &#123;<br>    server <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">8003</span> weight=<span class="hljs-number">1</span>;<br>&#125;<br><br>server &#123;<br>    listen       <span class="hljs-number">8001</span>;<br>    server_name  go.api.cn;<br><br>    location / &#123;<br>        proxy_pass http:<span class="hljs-comment">//go.api.cn;</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><ul><li>server 127.0.0.1:8003 weight=1   –&gt;  golang绑定的服务器</li></ul><ul><li>server_name  go.api.cn           –&gt;  代理域名 （端口是8001）</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Go</tag>
+      
+      <tag>Nginx</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Phpstorm-xdebug 的配置和使用</title>
     <link href="/2021/07/01/Phpstorm-xdebug/"/>
     <url>/2021/07/01/Phpstorm-xdebug/</url>
